@@ -49,7 +49,8 @@ func Enumerate() ([]int, error) {
 	return out, nil
 }
 
-func newPortDevFs(portNumber int) (*Port, error) {
+// NewPort creates an open serial port
+func NewPort(portNumber int) (*Port, error) {
 	// Use the devfs path for now.
 	name := fmt.Sprintf("ttyS%d", portNumber)
 	f, err := os.OpenFile("/dev/"+name, os.O_RDWR|syscall.O_NOCTTY, os.ModeExclusive)
